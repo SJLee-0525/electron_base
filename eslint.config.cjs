@@ -35,7 +35,8 @@ module.exports = [
       'react-hooks/rules-of-hooks': 'error',       // 필수 훅 순서 검사
       'react-hooks/exhaustive-deps': 'warn',       // 의존성 배열 검사
       'prettier/prettier': 'error',
-      'react/react-in-jsx-scope': 'off'
+      'react/react-in-jsx-scope': 'off',
+      'react/no-unknown-property': 'off'
     },
     settings: {
       react: { version: 'detect' }
