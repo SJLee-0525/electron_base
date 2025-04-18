@@ -1,5 +1,4 @@
 import { app, BrowserWindow } from "electron";
-
 import path from "path";
 import dotenv from "dotenv";
 
@@ -10,13 +9,10 @@ const createWindow = () => {
   const url = process.env.VITE_DEV_SERVER_URL;
   const win = new BrowserWindow({ width: 800, height: 600, webPreferences: { contextIsolation: true } });
 
-  console.log("__dirname:", __dirname);
-  console.log("HTML 파일 경로:", path.join(__dirname, "../renderer/index.html"));
-
   if (url) {
     win.loadURL(url);
   } else {
-    win.loadFile(path.join(__dirname, "../renderer/index.html")); // 경로 수정
+    win.loadFile(path.join(__dirname, "../renderer/index.html"));
   }
 };
 
