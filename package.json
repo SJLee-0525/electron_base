@@ -4,11 +4,9 @@
   "private": true,
   "description": "An Electron application with Vite and TypeScript",
   "author": "Your Name",
-
   "type": "commonjs",
   "main": "dist/main/main.js",
   "license": "MIT",
-
   "scripts": {
     "dev": "cross-env NODE_ENV=development concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "build:renderer": "vite build",
@@ -17,10 +15,13 @@
     "dist": "yarn build && electron-builder",
     "postinstall": "electron-builder install-app-deps"
   },
-
   "build": {
     "appId": "com.yourcompany.myapp",
-    "files": ["dist/**/*", "node_modules/**/*", "package.json"],
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
     "directories": {
       "buildResources": "build"
     },
@@ -29,9 +30,34 @@
       "icon": "build/icons/icon.png"
     },
     "mac": {
-      "target": ["dmg"], "identity": null,
+      "target": [
+        "dmg"
+      ],
+      "identity": null,
       "icon": "build/icons/icon.icns"
     },
-    "linux": {"target": ["AppImage"]}
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.0",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^35.1.5",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.2",
+    "wait-on": "^8.0.3"
   }
 }
