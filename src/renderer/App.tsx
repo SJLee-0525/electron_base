@@ -1,17 +1,16 @@
 import "@renderer/App.css";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Galaxy from "@pages/galaxy/Galaxy";
 
 const App = () => {
+  const queryClient = new QueryClient();
+
   return (
-    <Canvas camera={{ position: [0, 0, 10], fov: 75 }}>
-      <ambientLight />
+    <QueryClientProvider client={queryClient}>
       <Galaxy />
-      <OrbitControls />
-    </Canvas>
+    </QueryClientProvider>
   );
 };
 

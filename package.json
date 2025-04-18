@@ -45,10 +45,14 @@
   "dependencies": {
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
+    "@tanstack/react-query": "^5.74.4",
     "dotenv": "^16.5.0",
+    "msw": "^2.7.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "three": "^0.175.0"
+    "three": "^0.175.0",
+    "vite-plugin-glsl": "^1.4.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",
@@ -71,5 +75,10 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.2",
     "wait-on": "^8.0.3"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

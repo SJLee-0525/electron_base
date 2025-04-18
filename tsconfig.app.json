@@ -19,11 +19,12 @@
     "paths": {
       "@/*": ["src/*"],
       "@renderer/*": ["src/renderer/*"],
+      "@apis/*": ["src/renderer/apis/*"],
       "@components/*": ["src/renderer/components/*"],
       "@pages/*": ["src/renderer/pages/*"],
       "@hooks/*": ["src/renderer/hooks/*"],
       "@services/*": ["src/renderer/services/*"],
-      "@store/*": ["src/renderer/store/*"],
+      "@stores/*": ["src/renderer/stores/*"],
       "@assets/*": ["src/renderer/assets/*"],
       "@shared/*": ["src/shared/*"]
     }
