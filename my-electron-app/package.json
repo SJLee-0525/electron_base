@@ -1,0 +1,37 @@
+{
+  "name": "my-electron-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An Electron application with Vite and TypeScript",
+  "author": "Your Name",
+
+  "type": "commonjs",
+  "main": "dist/main/main.js",
+  "license": "MIT",
+
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build:renderer": "vite build",
+    "build:main": "tsc --project tsconfig.main.json",
+    "build": "yarn build:renderer && yarn build:main",
+    "dist": "yarn build && electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+
+  "build": {
+    "appId": "com.yourcompany.myapp",
+    "files": ["dist/**/*", "node_modules/**/*", "package.json"],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icons/icon.png"
+    },
+    "mac": {
+      "target": ["dmg"], "identity": null,
+      "icon": "build/icons/icon.icns"
+    },
+    "linux": {"target": ["AppImage"]}
+  }
+}
