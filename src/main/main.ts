@@ -7,7 +7,7 @@ dotenv.config({ path: path.resolve(__dirname, "../../.env." + (process.env.NODE_
 
 const createWindow = () => {
   const url = process.env.VITE_DEV_SERVER_URL;
-  const win = new BrowserWindow({ width: 800, height: 600, webPreferences: { contextIsolation: true } });
+  const win = new BrowserWindow({ width: 1280, height: 720, webPreferences: { contextIsolation: true } });
 
   if (url) {
     win.loadURL(url);
