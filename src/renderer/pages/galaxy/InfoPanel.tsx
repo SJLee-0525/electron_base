@@ -1,27 +1,29 @@
+import React from "react";
 import { EmailConversation } from "@renderer/types/emailTypes";
 
-const InfoPanel = ({ conversation }: { conversation: EmailConversation }) => {
-  return (
-    <div className="w-full h-full p-[8px] bg-[#ffffff] shadow-[rgba(0,0,0,0.1)_-2px_0px_8px] text-white">
-      <h2 className="mb-2 text-xl font-semibold">{conversation.contactName}</h2>
-      <p>{conversation.emailAddress}</p>
-      <p>Total Emails: {conversation.totalEmails}</p>
+interface InfoPanelProps {
+  conversation: EmailConversation;
+}
 
-      <hr className="my-4" />
-
-      <ul className="max-h-[calc(100%-140px)] overflow-y-auto pr-2">
-        {conversation.messages.map((m, i) => (
-          <li key={i} className="mb-2">
-            <strong>{m.subject}</strong>
-            <br />
-            <span className="text-sm">{m.body}</span>
-            <br />
-            <span className="text-xs text-white">{m.timestamp}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+const InfoPanel: React.FC<InfoPanelProps> = ({ conversation }) => (
+  <div className="p-4">
+    <h2 className="text-2xl font-bold mb-2">{conversation.contactName}</h2>
+    <p>
+      <strong>Email:</strong> {conversation.emailAddress}
+    </p>
+    <p>
+      <strong>Total Emails:</strong> {conversation.totalEmails}
+    </p>
+    <h3 className="mt-4 font-semibold">Recent Messages</h3>
+    <ul className="list-disc pl-5">
+      {conversation.messages.slice(-5).map((m, i) => (
+        <li key={i} className="mt-1">
+          <span className="font-medium">{m.fromMe ? "Me →" : "→ Me"}</span> <em>{m.subject}</em>{" "}
+          <small>({new Date(m.timestamp).toLocaleDateString()})</small>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export default InfoPanel;
