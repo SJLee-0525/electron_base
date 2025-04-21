@@ -76,8 +76,8 @@ const EmailNetwork: React.FC<EmailNetworkProps> = ({
   // 노드 반경 계산 함수: 이메일 수에 비례, 최소/최대 지정
   function getNodeRadius(node: NodeData) {
     return node.id === "me"
-      ? 16 // 'me' 노드는 고정 크기
-      : Math.max(Math.min((node.total ?? 1) * 4, 12), 8); // 8~12 사이
+      ? 12 // 'me' 노드는 고정 크기
+      : Math.max(Math.min((node.total ?? 1) * 4, 8), 8); // 8~12 사이
   }
 
   // conversations 변경 시 시뮬레이션 재가열하여 레이아웃 재배치
@@ -110,6 +110,7 @@ const EmailNetwork: React.FC<EmailNetworkProps> = ({
         const dn = d as NodeData;
         if (dn.id === "me") return; // 'me' 노드는 병합 제외
         const threshold = getNodeRadius(dn) * 2; // 병합 기준 거리
+
         // 현재 노드 배열에서 가장 가까운 후보 찾기
         const target = nodes.find((n) => n.id !== dn.id && Math.hypot(n.x! - dn.x!, n.y! - dn.y!) < threshold);
         if (target) {
